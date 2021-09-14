@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2021_09_14_112422) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "ordered_products", force: :cascade do |t|
     t.integer "price"
     t.integer "profit"
@@ -32,14 +35,6 @@ ActiveRecord::Schema.define(version: 2021_09_14_112422) do
     t.string "description"
     t.integer "visitor_id"
     t.index ["visitor_id"], name: "index_orders_on_visitor_id"
-  end
-
-  create_table "product_orders", force: :cascade do |t|
-    t.integer "quantity"
-    t.integer "total"
-    t.string "description"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "products", force: :cascade do |t|
