@@ -1,0 +1,12 @@
+<p>
+  <strong>Dateopen:</strong>
+  <%= @schedule.dateopen %>
+</p>
+
+<p>
+  <strong>Dateclose:</strong>
+  <%= @schedule.dateclose %>
+</p>
+
+<%= link_to 'Edit', edit_schedule_path(@schedule) %> |
+<%= link_to 'Back', schedules_path %>

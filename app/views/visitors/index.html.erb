@@ -1,0 +1,31 @@
+<h1>Visitors</h1>
+
+<br>
+
+<div class="table-responsive">
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Phone</th>
+      <th>Address</th>
+      <th colspan="3" style="width:10%"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @visitors.each do |visitor| %>
+      <tr style='text-transform:capitalize;'>
+        <td><%= visitor.name %></td>
+        <td><%= visitor.phone %></td>
+        <td><%= visitor.address %></td>
+        <td><%= link_to 'Edit', edit_visitor_path(visitor), class:'btn btn-secondary' %></td>
+        <td><%= link_to 'Destroy', visitor, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Visitor', new_visitor_path, class:'btn btn-primary' %>

@@ -1,0 +1,17 @@
+<p>
+  <strong>Name:</strong>
+  <%= @visitor.name %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @visitor.phone %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @visitor.address %>
+</p>
+
+<%= link_to 'Edit', edit_visitor_path(@visitor) %> |
+<%= link_to 'Back', visitors_path %>

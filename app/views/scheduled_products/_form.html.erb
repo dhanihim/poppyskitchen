@@ -1,0 +1,25 @@
+<%= form_with(model: scheduled_product) do |form| %>
+  <% if scheduled_product.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(scheduled_product.errors.count, "error") %> prohibited this scheduled_product from being saved:</h2>
+
+      <ul>
+        <% scheduled_product.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.text_field :schedule_id, class:"form-control", value:params[:id], type:"hidden" %>
+
+  <div class="field form-group">
+    <%= form.collection_select :product_id, Product.order(:id), :id, :name, {}, {class:"form-control"} %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Add Product', class:'btn btn-primary' %>
+  </div>
+<% end %>
+
+<br>

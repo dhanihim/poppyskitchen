@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Orders</h1>
+
+<br>
+
+<div class="table-responsive">
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th>Visitor</th>
+      <th>Total</th>
+      <th colspan="3" style="width:10%"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.visitor.name %></td>
+        <td><%= order.total %></td>
+        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+<br>
+
+<%= link_to 'New Order', new_order_path, class:'btn btn-primary' %>

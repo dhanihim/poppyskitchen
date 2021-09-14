@@ -1,0 +1,25 @@
+<%= form_with(model: order) do |form| %>
+  <% if order.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+        <% order.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+    <%= form.collection_select :visitor_id, Visitor.order(:id), :id, :name, {}, {class:"form-control", style:'text-transform:capitalize;'} %>
+  </div>
+
+  <div class="form-group">
+    <%= form.number_field :total, class:'form-control', placeholder:'Total of transaction' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit class:'btn btn-primary' %>
+  </div>
+<% end %>

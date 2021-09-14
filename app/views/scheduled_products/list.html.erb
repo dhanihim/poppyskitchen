@@ -1,0 +1,36 @@
+<br>
+
+<h3>#<%= params[:id]%></h3>
+
+<h4><strong>Date Open : <%= @schedules.dateopen%></strong></h4>
+<h4><strong>Date Close : <%= @schedules.dateclose%></strong></h4>
+
+<center><h3>Product List in This Schedule</h3></center>
+<br>
+<div class='row'>
+  <div class='col-md-6'>
+  <%= render 'form', scheduled_product: @scheduled_product %>
+  </div>
+
+  <div class='col-md-6'>
+    <div class="table-responsive">
+      <table class='table table-striped'>
+        <thead>
+          <tr>
+            <th>Product Name</th>
+            <th colspan="3" style="width:10%"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @existing_scheduled_products.each do |scheduled_product| %>
+            <tr>
+              <td><%= scheduled_product.product.name %></td>
+              <td><%= link_to 'Destroy', scheduled_product, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger' %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+<br>

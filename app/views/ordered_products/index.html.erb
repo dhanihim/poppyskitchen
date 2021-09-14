@@ -1,0 +1,38 @@
+<h1>Ordered Products</h1>
+<br>
+
+<div class="table-responsive">
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Scheduled Product</th>
+      <th>Order ID</th>
+      <th>Price</th>
+      <th>Profit</th>
+      <th>Total</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ordered_products.each do |ordered_product| %>
+      <tr>
+        <td><%= ordered_product.schedule_product_id %></td>
+        <td><%= ordered_product.order_id %></td>
+        <td><%= ordered_product.price %></td>
+        <td><%= ordered_product.profit %></td>
+        <td><%= ordered_product.total %></td>
+        <td><%= ordered_product.description %></td>
+        <td><%= link_to 'Show', ordered_product %></td>
+        <td><%= link_to 'Edit', edit_ordered_product_path(ordered_product) %></td>
+        <td><%= link_to 'Destroy', ordered_product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+<br>
+
+<%= link_to 'New Ordered Product', new_ordered_product_path, class:'btn btn-primary' %>
