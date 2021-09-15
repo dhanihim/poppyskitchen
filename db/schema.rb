@@ -12,9 +12,6 @@
 
 ActiveRecord::Schema.define(version: 2021_09_14_112422) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "ordered_products", force: :cascade do |t|
     t.integer "price"
     t.integer "profit"
