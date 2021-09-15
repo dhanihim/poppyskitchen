@@ -79,9 +79,17 @@
       </div>
       <div class="modal-body">
         <% @scheduled_product.each do |scheduledproduct| %>
-        	<%= image_tag(scheduledproduct.product.link, :alt => "menuprofile", :class => "d-block w-100") %>
-	       	<h4><strong><%= scheduledproduct.product.name %></strong></h4>
-        	<p><%= number_to_currency(scheduledproduct.product.price, unit: "Rp ") %></p>
+        	<div class='container'>
+        		<div class="row">
+	      			<div class='col-6'>
+	        			<%= image_tag(scheduledproduct.product.link, :alt => "menuprofile", :class => "d-block w-100") %>
+	        		</div>
+	        		<div class='col-6'>
+		       			<h3 style="text-transform: capitalize;"><strong><%= scheduledproduct.product.name %></strong></h3>
+	        			<p><%= number_to_currency(scheduledproduct.product.price, unit: "Rp ") %></p>
+	        		</div>
+	        	</div>
+        	</div>
         	<br>
 	    <% end %>
       </div>

@@ -5,7 +5,8 @@ class ScheduledProductsController < ApplicationController
   def list
     @schedules = Schedule.find(params[:id]);
     @existing_scheduled_products = ScheduledProduct.where(schedule_id: params[:id])
-  
+    @total = @existing_scheduled_products.count
+
     @scheduled_product = ScheduledProduct.new
   end
 

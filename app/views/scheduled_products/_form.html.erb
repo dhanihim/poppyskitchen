@@ -14,7 +14,7 @@
   <%= form.text_field :schedule_id, class:"form-control", value:params[:id], type:"hidden" %>
 
   <div class="field form-group">
-    <%= form.collection_select :product_id, Product.order(:id), :id, :name, {}, {class:"form-control"} %>
+    <%= form.collection_select :product_id, Product.order(:id), :id, :name, {}, {class:"form-control", style:'text-transform:capitalize;'} %>
   </div>
 
   <div class="actions">
