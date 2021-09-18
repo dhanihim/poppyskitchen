@@ -1,5 +1,10 @@
 class OrderedProductsController < ApplicationController
   before_action :set_ordered_product, only: %i[ show edit update destroy ]
+  before_action :authenticate_user!
+
+  def choose_schedule
+    @ordered_product = OrderedProduct.new
+  end
 
   # GET /ordered_products or /ordered_products.json
   def index

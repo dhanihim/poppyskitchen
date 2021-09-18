@@ -1,12 +1,17 @@
 <h1>Schedules</h1>
 
 <br>
+<h3>Future Schedules</h3>
 
+<br>
+<div><%= link_to 'New Schedule', new_schedule_path, class:'btn btn-primary' %>
+</div>
+<br>
 <div class="table-responsive">
 <table class='table table-striped'>
   <thead>
     <tr>
-      <th>Schedule ID</th>
+      <th>No.</th>
       <th>Dateopen</th>
       <th>Dateclose</th>
       <th colspan="3" style="width:10%"></th>
@@ -14,15 +19,17 @@
   </thead>
 
   <tbody>
-    <% @schedules.each do |schedule| %>
+    <% @counter = 1 %>
+    <% @futureschedules.each do |schedule| %>
       <tr>
-        <td><%= schedule.id %></td>
-        <td><%= schedule.dateopen %></td>
-        <td><%= schedule.dateclose %></td>
+        <td><%= @counter %></td>
+        <td><%= schedule.dateopen.to_formatted_s(:rfc822) %></td>
+        <td><%= schedule.dateclose.to_formatted_s(:rfc822) %></td>
         <td><%= link_to 'List', list_scheduled_product_path(schedule), class:'btn btn-info' %></td>
         <td><%= link_to 'Edit', edit_schedule_path(schedule), class:'btn btn-secondary' %></td>
         <td><%= link_to 'Destroy', schedule, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger' %></td>
       </tr>
+      <% @counter += 1 %>
     <% end %>
   </tbody>
 </table>
@@ -30,4 +37,35 @@
 
 <br>
 
-<%= link_to 'New Schedule', new_schedule_path, class:'btn btn-primary' %>
+<h3>Past Schedules</h3>
+
+<div class="table-responsive">
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th>No.</th>
+      <th>Dateopen</th>
+      <th>Dateclose</th>
+      <th colspan="3" style="width:10%"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @counter = 1 %>
+    <% @pastschedules.each do |schedule| %>
+      <tr>
+        <td><%= @counter %></td>
+        <td><%= schedule.dateopen.to_formatted_s(:rfc822) %></td>
+        <td><%= schedule.dateclose.to_formatted_s(:rfc822) %></td>
+        <td><%= link_to 'List', list_scheduled_product_path(schedule), class:'btn btn-info' %></td>
+        <td><%= link_to 'Edit', edit_schedule_path(schedule), class:'btn btn-secondary' %></td>
+        <td><%= link_to 'Destroy', schedule, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger' %></td>
+      </tr>
+      <% @counter += 1 %>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+<br>
+

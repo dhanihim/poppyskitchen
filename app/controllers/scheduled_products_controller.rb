@@ -1,6 +1,7 @@
 class ScheduledProductsController < ApplicationController
   before_action :set_scheduled_product, only: %i[ show edit update destroy ]
-
+  before_action :authenticate_user!
+  
   #custom
   def list
     @schedules = Schedule.find(params[:id]);

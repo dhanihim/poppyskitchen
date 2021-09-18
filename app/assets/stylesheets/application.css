@@ -27,7 +27,7 @@
 
 .header-text {
     position: absolute;
-    top: 3%;
+    top: 1%;
     left: 1.8%;
     right: auto;
     width: 96.66666666666666%;
@@ -42,4 +42,10 @@
 
 .table td, .table th {
   vertical-align: middle;
+}
+
+body  {
+  background-image: url("background.jpg");
+  background-repeat: filled;
+  background-attachment: fixed;
 }

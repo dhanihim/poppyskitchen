@@ -1,9 +1,12 @@
 class SchedulesController < ApplicationController
   before_action :set_schedule, only: %i[ show edit update destroy ]
-
+  before_action :authenticate_user!
+  
   # GET /schedules or /schedules.json
   def index
-    @schedules = Schedule.all
+    @futureschedules = Schedule.where("dateclose > ?", DateTime.now).order(dateopen: :asc)
+
+    @pastschedules = Schedule.where("dateclose < ?", DateTime.now).order(dateopen: :desc)
   end
 
   # GET /schedules/1 or /schedules/1.json
@@ -25,7 +28,7 @@ class SchedulesController < ApplicationController
 
     respond_to do |format|
       if @schedule.save
-        format.html { redirect_to schedules_url, notice: "Schedule was successfully created." }
+        format.html { redirect_to list_scheduled_product_path(@schedule), notice: "Schedule was successfully created." }
         format.json { render :show, status: :created, location: @schedule }
       else
         format.html { render :new, status: :unprocessable_entity }

@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @schedules = Schedule.where("dateclose > ?", DateTime.now).limit(1)
+    @schedules = Schedule.where("dateclose > ?", DateTime.now).order(dateclose: :asc).limit(1)
 
     @dateopen = "No Preorder"
     @id = 1;
@@ -10,5 +10,9 @@ class HomeController < ApplicationController
     end
 
     @scheduled_product = ScheduledProduct.where("schedule_id = ?", @id)
+  end
+
+  def page1
+    @visitor = Visitor.new
   end
 end

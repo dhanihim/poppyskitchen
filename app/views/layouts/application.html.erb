@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TemplatePreorder</title>
+    <title>Poppys Kitchen</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -15,12 +15,15 @@
   </head>
 
   <body>
-    <% if !current_page?(root_path) %>
-      <%= render "home/header" %>
+    <% url = request.path_info %>
+    <% if !current_page?(root_path) && user_signed_in?%>
+      <% if !url.include?('page') %>
+        <%= render "home/header" %>
+      <% end %>
         <div class='container'>
           <% if notice %>
             <br>
-            <%= render "layouts/alert" %>
+            <%= render "layouts/notice" %>
           <% end %>
           <%= yield %>
         </div>

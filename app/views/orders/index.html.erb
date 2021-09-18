@@ -1,6 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Orders</h1>
+<h4><%= @key %></h4>
+
 
 <br>
 
@@ -8,8 +10,11 @@
 <table class='table table-striped'>
   <thead>
     <tr>
+      <th>ID</th>
       <th>Visitor</th>
       <th>Total</th>
+      <th>Key</th>
+      <th>Order Datetime</th>
       <th colspan="3" style="width:10%"></th>
     </tr>
   </thead>
@@ -17,8 +22,11 @@
   <tbody>
     <% @orders.each do |order| %>
       <tr>
-        <td><%= order.visitor.name %></td>
+        <td><%= order.id %></td>
+        <td style="text-transform: capitalize;"><%= order.visitor.name %></td>
         <td><%= order.total %></td>
+        <td><%= order.key %></td>
+        <td><%= (order.created_at + 7.hours).to_s(:db) %></td>
         <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger' %></td>
       </tr>
     <% end %>

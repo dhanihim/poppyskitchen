@@ -2,8 +2,8 @@
 
 <h4>#<%= params[:id]%></h3>
 
-<h5><strong>Date Open : <%= @schedules.dateopen%></strong></h5>
-<h5><strong>Date Close : <%= @schedules.dateclose%></strong></h5>
+<h5><strong>Date Open : <%= @schedules.dateopen.to_formatted_s(:rfc822) %></strong></h5>
+<h5><strong>Date Close : <%= @schedules.dateclose.to_formatted_s(:rfc822) %></strong></h5>
 <hr>
 
 <center><h3>Product List in This Schedule (<%= @total %>)</h3></center>

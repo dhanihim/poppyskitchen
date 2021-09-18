@@ -5,15 +5,19 @@
 	    	<%= image_tag("hero.jpg", :alt => "hero", :class => "d-block w-100") %>
 	    	<div class="header-text hidden-xs">
 				<div class="col-md-6 col-xs-8 w3-container w3-animate-right">
-					<h1 style="font-size:6vw;">
-						<span>Selamat Datang di <strong>Poppy's Cooking</strong></span>
-					</h1>
-					<br>
+					<h2 style="font-size:6vw;">
+						<span>Selamat Datang di <strong>Poppy's Kitchen</strong></span>
+					</h2>
 
 					<h3 style="font-size:4vw;">
 						Lihat menu pre-order terdekat
 					</h3>
-					<%= link_to @dateopen , list_scheduled_product_path(@id), class:'btn btn-info btn-lg', "data-toggle" => "modal", "data-target" => "#menuModal" %>
+					<%= link_to @dateopen , list_scheduled_product_path(@id), class:'btn btn-info', "data-toggle" => "modal", "data-target" => "#menuModal" %>
+
+					<h3 style="font-size:4vw;">
+						Mau pesanan khusus?
+					</h3>
+					<a href="https://wa.me/628113505920?text=Saya%20tertarik%20dengan%20masakan%20yang%20anda%20jual" target="_blank"><button class='btn btn-primary'>Klik dan hubungi lewat Whatsapp</button></a>
 				</div><!-- /header-text -->
 			</div>
 		</div>
@@ -94,7 +98,7 @@
 	    <% end %>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Ikut Preorder</button>
+      	<%= link_to 'Ikut Preorder', page1_home_path(@id), class:'btn btn-primary' %>
       </div>
     </div>
   </div>
