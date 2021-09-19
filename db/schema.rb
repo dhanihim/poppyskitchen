@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_18_064803) do
+ActiveRecord::Schema.define(version: 2021_09_19_045710) do
 
   create_table "ordered_products", force: :cascade do |t|
     t.integer "price"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2021_09_18_064803) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "scheduled_product_id"
     t.integer "order_id"
+    t.integer "quantity"
     t.index ["order_id"], name: "index_ordered_products_on_order_id"
     t.index ["scheduled_product_id"], name: "index_ordered_products_on_scheduled_product_id"
   end

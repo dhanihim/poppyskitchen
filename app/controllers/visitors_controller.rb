@@ -4,7 +4,7 @@ class VisitorsController < ApplicationController
   
   # GET /visitors or /visitors.json
   def index
-    @visitors = Visitor.all
+    @visitors = Visitor.all.order(id: :desc)
   end
 
   # GET /visitors/1 or /visitors/1.json

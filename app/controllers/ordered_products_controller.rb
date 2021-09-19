@@ -4,11 +4,31 @@ class OrderedProductsController < ApplicationController
 
   def choose_schedule
     @ordered_product = OrderedProduct.new
+    @schedule = Schedule.where("dateclose > ?", DateTime.now).order(dateopen: :asc)
+
+    @order = Order.where("key = ?", params[:id])
+    
+    @order.each do |order|
+      @id = order.visitor_id
+      @visitor = Visitor.find(@id)
+    end
+  end
+
+  def list
+    @ordered_product = OrderedProduct.new
+    @schedule = Schedule.find(params[:id])
+    @order = Order.where("key = ?", params[:key])
+    @order.each do |order|
+      @id = order.id
+      @visitor = Visitor.find(@id)
+    end
+
+     @choice = OrderedProduct.where("order_id = ?", @id)
   end
 
   # GET /ordered_products or /ordered_products.json
   def index
-    @ordered_products = OrderedProduct.all
+    @ordered_products = OrderedProduct.all.order(id: :desc)
   end
 
   # GET /ordered_products/1 or /ordered_products/1.json
@@ -28,9 +48,17 @@ class OrderedProductsController < ApplicationController
   def create
     @ordered_product = OrderedProduct.new(ordered_product_params)
 
+    @ordered_product.price = @ordered_product.scheduled_product.product.price
+    @ordered_product.total = @ordered_product.quantity * @ordered_product.scheduled_product.product.price
+    @ordered_product.profit = @ordered_product.quantity * (@ordered_product.scheduled_product.product.price - @ordered_product.scheduled_product.product.cost)
+
     respond_to do |format|
       if @ordered_product.save
-        format.html { redirect_to @ordered_product, notice: "Ordered product was successfully created." }
+
+        @key = @ordered_product.order.key
+        @id = @ordered_product.scheduled_product.schedule.id
+
+        format.html { redirect_to list_ordered_product_path(@id, :key => @key), notice: "Ordered product was successfully created." }
         format.json { render :show, status: :created, location: @ordered_product }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -54,9 +82,12 @@ class OrderedProductsController < ApplicationController
 
   # DELETE /ordered_products/1 or /ordered_products/1.json
   def destroy
+    @key = @ordered_product.order.key
+    @id = @ordered_product.scheduled_product.schedule.id
+
     @ordered_product.destroy
     respond_to do |format|
-      format.html { redirect_to ordered_products_url, notice: "Ordered product was successfully destroyed." }
+      format.html { redirect_to list_ordered_product_path(@id, :key => @key), notice: "Ordered product was successfully destroyed." }
       format.json { head :no_content }
     end
   end
@@ -69,6 +100,6 @@ class OrderedProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def ordered_product_params
-      params.require(:ordered_product).permit(:price, :profit, :total, :description, :order_id, :scheduled_product_id)
+      params.require(:ordered_product).permit(:quantity, :price, :profit, :total, :description, :order_id, :scheduled_product_id)
     end
 end

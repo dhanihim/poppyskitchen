@@ -1,0 +1,33 @@
+<br>
+<div style='text-transform: capitalize; text-align: right;'>
+	<h4><strong><%= @visitor.name %></strong></h4>
+	<h4><%= @visitor.address %></h4>
+	<h4><%= @visitor.phone %></h4>
+</div>
+
+<br>
+<h4><strong>Klik Jadwal yang Diinginkan</strong></h4>
+
+<div>
+	<% @schedule.each do |schedule| %>
+	<hr>
+	<div>
+		<%= link_to schedule.dateopen.to_formatted_s(:rfc822) , list_ordered_product_path(schedule.id, :key => params[:id]), class:'btn btn-primary' %>
+	</div>
+	<br>
+	<div class='container'>
+		<table class="table table-striped">
+			<tbody>
+				<% @scheduled_product = ScheduledProduct.where("schedule_id = ?", schedule.id) %>
+				<% @scheduled_product.each do |schedule_product|%>
+				<tr>
+					<td style="width: 20%"><%= image_tag(schedule_product.product.link, :alt => "menuprofile", :class => "itemavatar") %></td>
+					<td><h3 style="text-transform: capitalize;"><strong><%= schedule_product.product.name %></strong></h3>
+	        		<p><%= number_to_currency(schedule_product.product.price, unit: "Rp ") %></p></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+	<% end %>
+</div>

@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
   def index
-    @schedules = Schedule.where("dateclose > ?", DateTime.now).order(dateclose: :asc).limit(1)
+    @schedules = Schedule.where("dateclose > ?", DateTime.now).order(dateopen: :asc).limit(1)
 
     @dateopen = "No Preorder"
     @id = 1;

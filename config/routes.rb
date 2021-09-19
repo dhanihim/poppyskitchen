@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'admin', to: 'products#index'
   resources :home do
     member do
-      get :page1
+      get :visitor
     end
   end
 
@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   resources :ordered_products do
     member do 
       get :choose_schedule
+      get :list
     end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

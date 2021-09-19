@@ -1,0 +1,42 @@
+<div style='text-transform: capitalize; text-align: right'>
+	<h4><strong><%= @visitor.name %></strong></h4>
+	<h4><%= @visitor.address %></h4>
+	<h4><%= @visitor.phone %></h4>
+	<h5><%= @schedule.dateopen.to_formatted_s(:rfc822) %> - <%= @schedule.dateclose.to_formatted_s(:rfc822) %></h5>
+</div>
+<hr>
+<div class="row">
+	<div class="col-md-4" style="margin-bottom: 30px;">
+		<%= render 'form', ordered_product: @ordered_product %>
+	</div>
+	<div class="col-md-8">
+		<h3>Daftar Pesanan</h3>
+		<div class="table-responsive">
+			<table class='table table-striped'>
+			  <thead>
+			    <tr>
+			      <th>Name</th>
+			      <th>Quantity</th>
+			      <th>Total</th>
+			      <th>Description</th>
+			      <th style="width:10%"></th>
+			    </tr>
+			  </thead>
+
+			  <tbody>
+			    <% @choice.each do |choice| %>
+			      <tr>
+			        <td style='text-transform:capitalize;'><%= choice.scheduled_product.product.name %></td>
+			        <td><%= choice.quantity %></td>
+			        <td><%= choice.total %></td>
+			        <td><%= choice.description %></td>
+			        <td><%= link_to 'X', choice, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger' %></td>
+			      </tr>
+			    <% end %>
+			  </tbody>
+			</table>
+			</div>
+	</div>
+</div>
+
+

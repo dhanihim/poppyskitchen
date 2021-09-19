@@ -12,26 +12,38 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :price %>
-    <%= form.number_field :price %>
+    <%= form.number_field :price, type:'hidden', value:'0' %>
   </div>
 
   <div class="field">
-    <%= form.label :profit %>
-    <%= form.number_field :profit %>
+    <%= form.number_field :profit, type:'hidden', value:'0' %>
   </div>
 
   <div class="field">
-    <%= form.label :total %>
-    <%= form.number_field :total %>
+    <%= form.number_field :total, type:'hidden', value:'0' %>
   </div>
 
   <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
+    <%= form.number_field :order_id, type:'hidden', value:@id %>
+  </div>
+
+  <div class="form-group">
+    <% if @schedule.present? %>
+    <%= form.collection_select :scheduled_product_id, ScheduledProduct.where("schedule_id = ?", @schedule.id).order(:id), :id, :name_with_price, {}, {class:"form-control", style:'text-transform:capitalize;'} %>
+    <% else %>
+    <%= form.collection_select :scheduled_product_id, ScheduledProduct.all.order(:id), :id, :name_with_price, {}, {class:"form-control", style:'text-transform:capitalize;'} %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <%= form.number_field :quantity, value:1, class:"form-control", autocomplete:"off", required:"true", min:"1" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.text_area:description, size: "30x3", class:"form-control", placeholder:"Deskripsi pesanan, ex: pedas, extra kuah, etc.." %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Add Product", class:'btn btn-primary' %>
   </div>
 <% end %>
