@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_20_025815) do
+ActiveRecord::Schema.define(version: 2021_09_20_042619) do
 
   create_table "ordered_products", force: :cascade do |t|
     t.integer "price"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 2021_09_20_025815) do
     t.string "description"
     t.integer "visitor_id"
     t.string "key"
+    t.integer "status"
     t.index ["visitor_id"], name: "index_orders_on_visitor_id"
   end
 

@@ -18,7 +18,7 @@
   <body>
     <% url = request.path_info %>
     <% if !current_page?(root_path) && user_signed_in?%>
-      <% if !url.include?('register') && !url.include?('ordered') %>
+      <% if !url.include?('register') && !url.include?('ordered') && !url.include?('finish')%>
         <%= render "home/header" %>
       <% end %>
         <div class='container'>

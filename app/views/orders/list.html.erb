@@ -1,0 +1,20 @@
+<h2>Schedule #<%= params[:id] %> List </h2>
+
+<br>
+<div class="table-responsive">
+<table class='table table-striped'>
+  <thead>
+    <tr>
+      <th>Visitor</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @ordered_product.each do |ordered_product| %>
+      <tr>
+        <td><%= ordered_product.order_id %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

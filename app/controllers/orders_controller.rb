@@ -2,13 +2,22 @@ class OrdersController < ApplicationController
   before_action :set_order, only: %i[ show edit update destroy ]
   before_action :authenticate_user!
 
+  def finish
+    @order = Order.where("key = ?", params[:key])
+
+    @order.each do |order|
+      order.status = 1
+      order.save
+    end
+  end
+
   def list
-    @orders = Order.all.order(id: :desc)
+    @ordered_product = OrderedProduct.all
   end
 
   # GET /orders or /orders.json
   def index
-    @orders = Order.all.order(id: :desc)
+    @orders = Order.where("status = 1").order(id: :desc)
   end
 
   # GET /orders/1 or /orders/1.json
@@ -69,6 +78,6 @@ class OrdersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def order_params
-      params.require(:order).permit(:total, :key,:visitor_id)
+      params.require(:order).permit(:total, :key,:visitor_id, :status)
     end
 end

@@ -20,7 +20,9 @@ class OrderedProductsController < ApplicationController
     @order = Order.where("key = ?", params[:key])
     @order.each do |order|
       @id = order.id
-      @visitor = Visitor.find(@id)
+      @visitorid = order.visitor_id
+      @visitor = Visitor.find(@visitorid)
+      @key = order.key
     end
 
      @choice = OrderedProduct.where("order_id = ?", @id)

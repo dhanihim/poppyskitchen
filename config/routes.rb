@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :orders do
     member do
       get :list
+      get :finish
     end
   end
   resources :visitors

@@ -4,9 +4,9 @@ class SchedulesController < ApplicationController
   
   # GET /schedules or /schedules.json
   def index
-    @futureschedules = Schedule.where("dateclose > ?", DateTime.now).order(dateopen: :asc)
+    @futureschedules = Schedule.where("datedelivery > ?", DateTime.now).order(dateopen: :asc)
 
-    @pastschedules = Schedule.where("dateclose < ?", DateTime.now).order(dateopen: :desc)
+    @pastschedules = Schedule.where("datedelivery < ?", DateTime.now).order(dateopen: :desc)
   end
 
   # GET /schedules/1 or /schedules/1.json
