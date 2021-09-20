@@ -2,6 +2,10 @@ class OrdersController < ApplicationController
   before_action :set_order, only: %i[ show edit update destroy ]
   before_action :authenticate_user!
 
+  def list
+    @orders = Order.all.order(id: :desc)
+  end
+
   # GET /orders or /orders.json
   def index
     @orders = Order.all.order(id: :desc)

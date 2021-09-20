@@ -49,3 +49,8 @@ body  {
   background-repeat: filled;
   background-attachment: fixed;
 }
+
+.btn {
+   white-space: nowrap;
+   text-align: center;
+}

@@ -8,6 +8,7 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
@@ -17,7 +18,7 @@
   <body>
     <% url = request.path_info %>
     <% if !current_page?(root_path) && user_signed_in?%>
-      <% if !url.include?('visitor') && !url.include?('ordered') %>
+      <% if !url.include?('register') && !url.include?('ordered') %>
         <%= render "home/header" %>
       <% end %>
         <div class='container'>

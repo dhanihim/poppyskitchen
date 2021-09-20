@@ -13,15 +13,21 @@
 
   <br>
   <div class="form-group">
-    <%= form.label :dateopen %>
+    <%= form.label :"Preoder Open Date" %>
     <br>
-    <%= form.date_field :dateopen, class:'form-control' %>
+    <%= form.date_field :dateopen, class:'form-control', required:'true' %>
   </div>
 
   <div class="form-group">
-    <%= form.label :dateclose %>
+    <%= form.label :"Preoder Close Date" %>
     <br>
-    <%= form.date_field :dateclose, class:'form-control'%>
+    <%= form.date_field :dateclose, class:'form-control', required:'true' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :"Delivery Date"%>
+    <br>
+    <%= form.date_field :datedelivery, class:'form-control', required:'true' %>
   </div>
 
 

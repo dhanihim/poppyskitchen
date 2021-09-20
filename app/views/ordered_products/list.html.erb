@@ -1,8 +1,7 @@
 <div style='text-transform: capitalize; text-align: right'>
-	<h4><strong><%= @visitor.name %></strong></h4>
-	<h4><%= @visitor.address %></h4>
-	<h4><%= @visitor.phone %></h4>
-	<h5><%= @schedule.dateopen.to_formatted_s(:rfc822) %> - <%= @schedule.dateclose.to_formatted_s(:rfc822) %></h5>
+	<h3><strong><%= @visitor.name %></strong></h3>
+	<h4><%= @visitor.address %> - <%= @visitor.phone %></h4>
+	<h4><strong><%= @schedule.datedelivery.to_formatted_s(:rfc822) %></strong></h4>
 </div>
 <hr>
 <div class="row">

@@ -12,18 +12,18 @@
   <% end %>
 
   <div class="form-group">
-    <%= form.text_field :name, class:'form-control', placeholder:'Name of the visitor', required:'true', autocomplete:'off', style:'text-transform:capitalize;' %>
+    <%= form.text_field :name, class:'form-control', placeholder:'Nama Lengkap', required:'true', autocomplete:'off', style:'text-transform:capitalize;' %>
   </div>
 
   <div class="form-group">
-    <%= form.number_field :phone, class:'form-control', placeholder:'Phone of the visitor', required:'true', autocomplete:'off' %>
+    <%= form.number_field :phone, class:'form-control', placeholder:'Format 08xxxxx, pastikan terhubung Whatsapp', required:'true', autocomplete:'off' %>
   </div>
 
   <div class="form-group">
-    <%= form.text_field :address, class:'form-control', placeholder:'Address of the visitor', required:'true', autocomplete:'off', style:'text-transform:capitalize;' %>
+    <%= form.text_field :address, class:'form-control', placeholder:'Alamat Pengiriman', required:'true', autocomplete:'off', style:'text-transform:capitalize;' %>
   </div>
 
   <div class="actions">
-    <%= form.submit class:'btn btn-primary' %>
+    <%= form.submit "Daftar", class:'btn btn-primary' %>
   </div>
 <% end %>

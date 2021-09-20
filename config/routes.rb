@@ -4,11 +4,15 @@ Rails.application.routes.draw do
   get 'admin', to: 'products#index'
   resources :home do
     member do
-      get :visitor
+      get :register
     end
   end
 
-  resources :orders
+  resources :orders do
+    member do
+      get :list
+    end
+  end
   resources :visitors
   resources :scheduled_products do
     member do 

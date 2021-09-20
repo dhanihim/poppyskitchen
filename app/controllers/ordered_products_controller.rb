@@ -4,7 +4,7 @@ class OrderedProductsController < ApplicationController
 
   def choose_schedule
     @ordered_product = OrderedProduct.new
-    @schedule = Schedule.where("dateclose > ?", DateTime.now).order(dateopen: :asc)
+    @schedule = Schedule.where("dateopen < ? AND dateclose > ?", DateTime.now, DateTime.now).order(dateopen: :asc)
 
     @order = Order.where("key = ?", params[:id])
     

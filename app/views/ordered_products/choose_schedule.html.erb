@@ -1,18 +1,11 @@
 <br>
-<div style='text-transform: capitalize; text-align: right;'>
-	<h4><strong><%= @visitor.name %></strong></h4>
-	<h4><%= @visitor.address %></h4>
-	<h4><%= @visitor.phone %></h4>
-</div>
-
-<br>
 <h4><strong>Klik Jadwal yang Diinginkan</strong></h4>
 
 <div>
 	<% @schedule.each do |schedule| %>
 	<hr>
 	<div>
-		<%= link_to schedule.dateopen.to_formatted_s(:rfc822) , list_ordered_product_path(schedule.id, :key => params[:id]), class:'btn btn-primary' %>
+		<%= link_to schedule.datedelivery.to_formatted_s(:rfc822) , list_ordered_product_path(schedule.id, :key => params[:id]), class:'btn btn-primary' %>
 	</div>
 	<br>
 	<div class='container'>
@@ -31,3 +24,6 @@
 	</div>
 	<% end %>
 </div>
+
+<br>
+<br>
