@@ -1,7 +1,6 @@
 class OrderedProductsController < ApplicationController
   before_action :set_ordered_product, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!
-
+  
   def choose_schedule
     @ordered_product = OrderedProduct.new
     @schedule = Schedule.where("dateopen < ? AND dateclose > ?", DateTime.now, DateTime.now).order(dateopen: :asc)
